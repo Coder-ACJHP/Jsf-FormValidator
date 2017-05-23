@@ -1,89 +1,9 @@
 # Jsf-FormValidator
 JSF &amp; XHTML form validators example
 
-Phone number validator : 
-<pre>
-<code>
-<h:inputText value="#{person.phoneNumber}"
-									id="phone_number"
-									label="Phone Number"
-									validatorMessage="must be like xxxx-xxx-xxxx">
-						<f:validateRegex pattern="\d{4}-\d{3}-\d{4}" />			
-</h:inputText>			
-<h:message for="phone_number" styleClass="error"/>
-</code>
-</pre>
-<h3>Custom validator : </h3><br/>
-<label>In HTML----->></label>
-<pre>
-<code>
-Course code : <h:inputText value="#{person.courseCode}"
-			id="course_code"
-			label="Course Code"
-			validator="#{person.courseCodeValidator}">
-</h:inputText>			
-<h:message for="course_code" styleClass="error"/>
-</code>
-</pre>
-------------------------------------------------------------
-<label>In Java----->></label>
-<pre>
-<code>
-public void courseCodeValidator(FacesContext context,
-									UIComponent component, Object value) throws ValidatorException {
-		
-		if(value == null) {
-			return;
-		}
-		
-		String message = value.toString();
-		
-		if(!message.startsWith("CODER")) {
-			FacesMessage facesMessage = new FacesMessage("Must be start with CODER");
-			facesMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(facesMessage);
-		}
-	}
-</code>
-</pre>
-<h3>Email validator : </h3><br/>
-<label>In HTML----->></label>
-<pre>
-<code>
-Email: <h:inputText value="#{person.email}"
-									id="email"
-									label="Email"
-									validator="#{person.emailValidator}">
-					</h:inputText>			
-					<h:message for="email" styleClass="error"/>
-  </code>
-  </pre>
-  ----------------------------------------------------------------
-  
-  <label>In Java----->></label>
-  <pre>
-  <code>
-  public void emailValidator(FacesContext context,
-								UIComponent component, Object value) throws ValidatorException {
-		if(value == null) {
-			return;
-		}
-		
-		String vailedEmail = value.toString();
-		
-		final String EMAIL_PATTERN =  "^[_A-Za-z0-9-]+(\\." +
-				"[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*" +
-				"(\\.[A-Za-z]{2,})$";
-		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-		Matcher matcher = pattern.matcher(vailedEmail);
-		
-		if(!matcher.matches()) {
-			FacesMessage message = new FacesMessage("E-mail validation failed.",
-						"Invalid E-mail format.");
-			message.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(message);
-		}
-		
-	}
-</code>
-</pre>
+1-Phone number validator. 
+
+2-Custom (Course code) validator.
+
+3-Email validator (with regex).
+
