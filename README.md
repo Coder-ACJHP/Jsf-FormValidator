@@ -2,7 +2,7 @@
 JSF &amp; XHTML form validators example
 
 Phone number validator : 
-
+<pre>
 <code>
 <h:inputText value="#{person.phoneNumber}"
 									id="phone_number"
@@ -12,20 +12,22 @@ Phone number validator :
 </h:inputText>			
 <h:message for="phone_number" styleClass="error"/>
 </code>
-
-Custom validator : 
-In HTML----->>
+</pre>
+<h3>Custom validator : </h3><br/>
+<label>In HTML----->></label>
+<pre>
 <code>
 Course code : <h:inputText value="#{person.courseCode}"
-									id="course_code"
-									label="Course Code"
-									validator="#{person.courseCodeValidator}">
+			id="course_code"
+			label="Course Code"
+			validator="#{person.courseCodeValidator}">
 </h:inputText>			
 <h:message for="course_code" styleClass="error"/>
 </code>
-
+</pre>
 ------------------------------------------------------------
-In Java----->>
+<label>In Java----->></label>
+<pre>
 <code>
 public void courseCodeValidator(FacesContext context,
 									UIComponent component, Object value) throws ValidatorException {
@@ -43,9 +45,10 @@ public void courseCodeValidator(FacesContext context,
 		}
 	}
 </code>
-
-Email validator : 
-In HTML----->>
+</pre>
+<h3>Email validator : </h3><br/>
+<label>In HTML----->></label>
+<pre>
 <code>
 Email: <h:inputText value="#{person.email}"
 									id="email"
@@ -54,10 +57,11 @@ Email: <h:inputText value="#{person.email}"
 					</h:inputText>			
 					<h:message for="email" styleClass="error"/>
   </code>
-  
+  </pre>
   ----------------------------------------------------------------
   
-  In Java----->>
+  <label>In Java----->></label>
+  <pre>
   <code>
   public void emailValidator(FacesContext context,
 								UIComponent component, Object value) throws ValidatorException {
@@ -82,3 +86,4 @@ Email: <h:inputText value="#{person.email}"
 		
 	}
 </code>
+</pre>
